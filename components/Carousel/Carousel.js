@@ -10,7 +10,7 @@ class Carousel {
     this.rightButton.addEventListener('click', () => this.buttonPress());
   }
   buttonPress() {
-    this.images.forEach(img => img.style.display = 'flex');
+    this.images.forEach(img => img.classList.toggle('active-img'));
   }
 }
 
