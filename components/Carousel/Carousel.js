@@ -11,7 +11,7 @@ class Carousel {
   }
   buttonPress() {
     this.images.forEach(img => {
-      TweenMax.from(img, 1, {x:300, scale: .5, opacity: 0})
+      TweenMax.from(img, .5, {x:500, opacity: 0})
       img.classList.toggle('active-img')
     });
   }
