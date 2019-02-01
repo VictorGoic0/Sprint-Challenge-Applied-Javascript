@@ -10,7 +10,10 @@ class Carousel {
     this.rightButton.addEventListener('click', () => this.buttonPress());
   }
   buttonPress() {
-    this.images.forEach(img => img.classList.toggle('active-img'));
+    this.images.forEach(img => {
+      TweenMax.from(img, 1, {x:300, scale: .5, opacity: 0})
+      img.classList.toggle('active-img')
+    });
   }
 }
 
