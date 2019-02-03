@@ -39,7 +39,7 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:1200}));
+    images.forEach( img => TweenMax.from(img, 1, {x:1200, ease:Power3.easeOut}));
   }
   leftButtonPress() {
     const images = this.images;
@@ -71,7 +71,7 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:-1200}));
+    images.forEach( img => TweenMax.from(img, 1, {x:-1200, ease:Power3.easeOut}));
   }
 }
 
