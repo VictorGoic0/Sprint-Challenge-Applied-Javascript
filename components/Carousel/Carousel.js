@@ -10,10 +10,30 @@ class Carousel {
     this.rightButton.addEventListener('click', () => this.buttonPress());
   }
   buttonPress() {
-    this.images.forEach(img => {
+    /*this.images.forEach(img => {
       TweenMax.from(img, .5, {x:500, opacity: 0})
       img.classList.toggle('active-img')
-    });
+    });*/
+    const images = this.images;
+    for (let i=0; i<images.length; i++) {
+      if (images[i].classList.contains('active-img')) {
+        images[i].classList.remove('active-img');
+        //images[i+1].classList.add('active-img');
+        images[i+2].classList.add('active-img');
+        break;
+      }
+      if (images[images.length-1].classList.contains('active-img') && images[images.length-2].classList.contains('active-img')) {
+        images[0].classList.add('active-img');
+        images[images.length-1].style.order = -1;
+        break;
+      }
+      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
+        images[images.length-1].classList.remove('active-img');
+        images[1].classList.add('active-img');
+        break;
+      }
+    }
+    images.forEach( img => TweenMax.from(img, .5, {x:800, opacity: 0}));
   }
 }
 

@@ -304,5 +304,5 @@ body {
   display: none;
 }
 .carousel .active-img {
-  display: inline-block;
+  display: flex;
 }
