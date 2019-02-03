@@ -17,6 +17,7 @@ class Carousel {
       if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
         images[images.length-1].classList.remove('active-img');
         images[1].classList.add('active-img');
+        images[0].style.order = 0;
         break;
       }
 
