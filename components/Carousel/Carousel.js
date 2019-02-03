@@ -11,25 +11,26 @@ class Carousel {
   }
   rightButtonPress() {
     const images = this.images;
+    const length = images.length;
 
-    for (let i=0; i<images.length; i++) {
+    for (let i=0; i<length; i++) {
 
-      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
-        images[images.length-1].classList.remove('active-img');
+      if (images[length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
+        images[length-1].classList.remove('active-img');
         images[1].classList.add('active-img');
         images[0].style.order = 0;
         break;
       }
 
-      if (images[images.length-1].classList.contains('active-img') && images[images.length-2].classList.contains('active-img')) {
-        images[images.length-2].classList.remove('active-img');
+      if (images[length-1].classList.contains('active-img') && images[length-2].classList.contains('active-img')) {
+        images[length-2].classList.remove('active-img');
         images[0].classList.add('active-img');
-        images[images.length-1].style.order = -1;
+        images[length-1].style.order = -1;
         break;
       }
 
       if (images[1].classList.contains('active-img')) {
-        images[images.length-1].style.order = 0;
+        images[length-1].style.order = 0;
       }
 
       if (images[i].classList.contains('active-img')) {
@@ -38,17 +39,18 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:1200, opacity: 0}));
+    images.forEach( img => TweenMax.from(img, .5, {x:1200}));
   }
   leftButtonPress() {
     const images = this.images;
+    const length = images.length;
 
-    for (let i=images.length-1; i>=0; i--) {
+    for (let i=length-1; i>=0; i--) {
 
       if (images[0].classList.contains('active-img') && images[1].classList.contains('active-img')) {
         images[1].classList.remove('active-img');
         images[0].style.order = 1;
-        images[images.length-1].classList.add('active-img');
+        images[length-1].classList.add('active-img');
         break;
       }
 
@@ -56,10 +58,10 @@ class Carousel {
         images[0].style.order = 0;
       }
 
-      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
+      if (images[length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
         images[0].classList.remove('active-img');
-        images[images.length-1].style.order = 0;
-        images[images.length-2].classList.add('active-img');
+        images[length-1].style.order = 0;
+        images[length-2].classList.add('active-img');
         break;
       }
 
@@ -69,7 +71,7 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:-1200, opacity: 0}));
+    images.forEach( img => TweenMax.from(img, .5, {x:-1200}));
   }
 }
 
