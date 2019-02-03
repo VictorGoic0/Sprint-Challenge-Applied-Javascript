@@ -16,20 +16,26 @@ class Carousel {
     });*/
     const images = this.images;
     for (let i=0; i<images.length; i++) {
-      if (images[i].classList.contains('active-img')) {
-        images[i].classList.remove('active-img');
-        //images[i+1].classList.add('active-img');
-        images[i+2].classList.add('active-img');
+      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
+        images[images.length-1].classList.remove('active-img');
+        images[1].classList.add('active-img');
         break;
       }
+
       if (images[images.length-1].classList.contains('active-img') && images[images.length-2].classList.contains('active-img')) {
+        images[images.length-2].classList.remove('active-img');
         images[0].classList.add('active-img');
         images[images.length-1].style.order = -1;
         break;
       }
-      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
-        images[images.length-1].classList.remove('active-img');
-        images[1].classList.add('active-img');
+
+      if (images[1].classList.contains('active-img')) {
+        images[images.length-1].style.order = 0;
+      }
+
+      if (images[i].classList.contains('active-img')) {
+        images[i].classList.remove('active-img');
+        images[i+2].classList.add('active-img');
         break;
       }
     }
