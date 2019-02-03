@@ -6,16 +6,14 @@ class Carousel {
     this.images = this.carousel.querySelectorAll('img');
 
 
-    this.leftButton.addEventListener('click', () => this.buttonPress());
-    this.rightButton.addEventListener('click', () => this.buttonPress());
+    this.leftButton.addEventListener('click', () => this.leftButtonPress());
+    this.rightButton.addEventListener('click', () => this.rightButtonPress());
   }
-  buttonPress() {
-    /*this.images.forEach(img => {
-      TweenMax.from(img, .5, {x:500, opacity: 0})
-      img.classList.toggle('active-img')
-    });*/
+  rightButtonPress() {
     const images = this.images;
+
     for (let i=0; i<images.length; i++) {
+
       if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
         images[images.length-1].classList.remove('active-img');
         images[1].classList.add('active-img');
@@ -40,6 +38,37 @@ class Carousel {
       }
     }
     images.forEach( img => TweenMax.from(img, .5, {x:800, opacity: 0}));
+  }
+  leftButtonPress() {
+    const images = this.images;
+
+    for (let i=images.length-1; i>=0; i--) {
+
+      if (images[0].classList.contains('active-img') && images[1].classList.contains('active-img')) {
+        images[1].classList.remove('active-img');
+        images[0].style.order = 1;
+        images[images.length-1].classList.add('active-img');
+        break;
+      }
+
+      if (images[1].classList.contains('active-img') && images[2].classList.contains('active-img')) {
+        images[0].style.order = 0;
+      }
+
+      if (images[images.length-1].classList.contains('active-img') && images[0].classList.contains('active-img')) {
+        images[0].classList.remove('active-img');
+        images[images.length-1].style.order = 0;
+        images[images.length-2].classList.add('active-img');
+        break;
+      }
+
+      if (images[i].classList.contains('active-img')) {
+        images[i].classList.remove('active-img');
+        images[i-2].classList.add('active-img');
+        break;
+      }
+    }
+    images.forEach( img => TweenMax.from(img, .5, {x:-800, opacity: 0}));
   }
 }
 
