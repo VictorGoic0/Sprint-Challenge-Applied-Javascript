@@ -38,7 +38,7 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:800, opacity: 0}));
+    images.forEach( img => TweenMax.from(img, .5, {x:1200, opacity: 0}));
   }
   leftButtonPress() {
     const images = this.images;
@@ -69,7 +69,7 @@ class Carousel {
         break;
       }
     }
-    images.forEach( img => TweenMax.from(img, .5, {x:-800, opacity: 0}));
+    images.forEach( img => TweenMax.from(img, .5, {x:-1200, opacity: 0}));
   }
 }
 
